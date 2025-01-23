@@ -9,7 +9,7 @@ function Logo() {
         quality={100}
         height="60"
         width="60"
-        alt="The Wild Oasis logo"
+        alt="The Cabin Oasis logo"
       />
       <span className="text-xl font-semibold text-primary-100">
         The Cabin Oasis
