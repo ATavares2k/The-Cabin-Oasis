@@ -35,3 +35,5 @@ next-env.d.ts
 
 # folder that added data to the supabase
 up/
+
+app/_lib/supabase.js
