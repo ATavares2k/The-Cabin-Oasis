@@ -1,6 +1,9 @@
+import SpinnerMini from "@/app/_components/SpinnerMini";
+import TextExpander from "@/app/_components/TextExpander";
+import Image from "next/image";
 import { getCabin, getCabins } from "@/app/_lib/data-service";
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   const cabins = await getCabins();
@@ -29,8 +32,11 @@ export default async function Page({ params }) {
             Cabin {name}
           </h3>
 
-          <p className="text-lg text-primary-300 mb-10">{description}</p>
-
+          <p className="text-lg text-primary-300 mb-10">
+            <Suspense fallback={<SpinnerMini />}>
+              <TextExpander>{description}</TextExpander>
+            </Suspense>
+          </p>
           <ul className="flex flex-col gap-4 mb-7">
             <li className="flex gap-3 items-center">
               <UsersIcon className="h-5 w-5 text-primary-600" />
@@ -42,7 +48,7 @@ export default async function Page({ params }) {
             <li className="flex gap-3 items-center">
               <MapPinIcon className="h-5 w-5 text-primary-600" />
               <span className="text-lg">
-                Located in the heart of the{" "}
+                Located in the heart of the
                 <span className="font-bold">Dolomites</span> (Italy)
               </span>
             </li>
